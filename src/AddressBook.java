@@ -8,14 +8,29 @@ public class AddressBook {
     }
 
     public void addContact(String name, String phoneNumber, String emailAddress, String address) {
+        boolean isAlreadyInUse =false;
+        for (Contact contact: contacts){
+            if (contact.getEmailAddress().equals(emailAddress)){
+               isAlreadyInUse =true ;
+               break;
+            }
 
-        contacts.add(new Contact(name, phoneNumber, emailAddress, address));
+        }
+        if(isAlreadyInUse){
+            System.out.println("Email Already In Use");
+        }
+        else{
+            contacts.add(new Contact ( name,phoneNumber, emailAddress,address));
+        }
+
+
+
     }
 
     public  String removeContact(String emailAddress) {
         int addressFound =0;
         for (Contact contact : contacts) {
-            if (contact.getEmailAddress() == emailAddress) {
+            if (contact.getEmailAddress().equals(emailAddress)) {
                 addressFound=1;
                 contacts.remove(contact);
             }
@@ -24,7 +39,7 @@ public class AddressBook {
             return "Contact Not Found";
         }
         else{
-            return "Contact Not Found" ;
+            return "Contact  Found" ;
         }
     }
     public void searchContact(String name) {
