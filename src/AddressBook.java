@@ -21,6 +21,8 @@ public class AddressBook {
         }
         else{
             contacts.add(new Contact ( name,phoneNumber, emailAddress,address));
+            System.out.println("Contact Added Successfully ");
+
         }
 
 
@@ -50,9 +52,15 @@ public class AddressBook {
                 foundList.add(contact);
             }
         }
+        displayContact(foundList);
 
     }
     public void displayAllContact(){
+        displayContact(contacts);
+
+    }
+
+    private void displayContact(ArrayList<Contact> contacts){
         for (Contact contact : contacts){
             System.out.println();
             System.out.println("Name : " + contact.getName());
@@ -61,8 +69,7 @@ public class AddressBook {
             System.out.println("Address : "+ contact.getAddress());
             System.out.println();
         }
-    }
 
-    // use one function for display
+    }
 
 }
